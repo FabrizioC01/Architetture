@@ -1,0 +1,52 @@
+$date
+	Thu Oct 12 19:18:49 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 1 ! v3 $end
+$var wire 1 " v2 $end
+$var wire 1 # v1 $end
+$var wire 1 $ v0 $end
+$var reg 1 % in0 $end
+$var reg 1 & in1 $end
+$scope module d $end
+$var wire 1 % i0 $end
+$var wire 1 & i1 $end
+$var wire 1 $ out0 $end
+$var wire 1 # out1 $end
+$var wire 1 " out2 $end
+$var wire 1 ! out3 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0&
+0%
+1$
+0#
+0"
+0!
+$end
+#10
+1"
+0$
+1%
+#20
+0"
+1#
+1&
+0%
+#30
+1!
+0#
+1%
+#40

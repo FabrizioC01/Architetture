@@ -1,0 +1,61 @@
+$date
+	Wed Oct 11 22:50:30 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 1 ! q $end
+$var wire 1 " nq $end
+$var reg 1 # reset $end
+$var reg 1 $ set $end
+$scope module latch $end
+$var wire 1 " notq $end
+$var wire 1 ! q $end
+$var wire 1 # r $end
+$var wire 1 $ s $end
+$var wire 1 % wOut1 $end
+$var wire 1 & wOut2 $end
+$var wire 1 ' wR $end
+$var wire 1 ( wS $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+1(
+0'
+0&
+1%
+1$
+0#
+0"
+1!
+$end
+#21
+0$
+#42
+1"
+1&
+0(
+0!
+0%
+1'
+1#
+#63
+0#
+#84
+1!
+1%
+0'
+0"
+0&
+1(
+1$
+#86

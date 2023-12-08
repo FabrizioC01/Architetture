@@ -1,0 +1,100 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x11f805380 .scope module, "test" "test" 2 1;
+ .timescale 0 0;
+v0x11f817440_0 .var "clock", 0 0;
+v0x11f8174e0_0 .var "d", 0 0;
+v0x11f817590_0 .net "nq", 0 0, L_0x11f817db0;  1 drivers
+v0x11f817680_0 .net "q", 0 0, L_0x11f817d10;  1 drivers
+S_0x11f8044e0 .scope module, "l" "latchD" 2 5, 3 1 0, S_0x11f805380;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clock";
+    .port_info 1 /INPUT 1 "D";
+    .port_info 2 /OUTPUT 1 "Q";
+    .port_info 3 /OUTPUT 1 "nQ";
+L_0x11f817830 .functor AND 1, v0x11f817440_0, L_0x11f817750, C4<1>, C4<1>;
+L_0x11f817960 .functor AND 1, v0x11f817440_0, v0x11f8174e0_0, C4<1>, C4<1>;
+v0x11f816f60_0 .net "D", 0 0, v0x11f8174e0_0;  1 drivers
+v0x11f817010_0 .net "Q", 0 0, L_0x11f817d10;  alias, 1 drivers
+v0x11f8170b0_0 .net *"_ivl_1", 0 0, L_0x11f817750;  1 drivers
+v0x11f817160_0 .net "clock", 0 0, v0x11f817440_0;  1 drivers
+v0x11f8171f0_0 .net "nQ", 0 0, L_0x11f817db0;  alias, 1 drivers
+v0x11f8172c0_0 .net "w1", 0 0, L_0x11f817830;  1 drivers
+v0x11f817370_0 .net "w2", 0 0, L_0x11f817960;  1 drivers
+L_0x11f817750 .reduce/nor v0x11f8174e0_0;
+S_0x11f8068f0 .scope module, "l" "latchRS" 3 8, 4 1 0, S_0x11f8044e0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /OUTPUT 1 "notq";
+    .port_info 2 /INPUT 1 "s";
+    .port_info 3 /INPUT 1 "r";
+L_0x11f817a10 .functor OR 1, L_0x11f817830, L_0x11f817c20, C4<0>, C4<0>;
+L_0x11f817a80 .functor OR 1, L_0x11f817960, L_0x11f817b30, C4<0>, C4<0>;
+L_0x11f817b30 .functor NOT 1, L_0x11f817a10, C4<0>, C4<0>, C4<0>;
+L_0x11f817c20 .functor NOT 1, L_0x11f817a80, C4<0>, C4<0>, C4<0>;
+L_0x11f817d10 .functor BUFZ 1, L_0x11f817b30, C4<0>, C4<0>, C4<0>;
+L_0x11f817db0 .functor BUFZ 1, L_0x11f817c20, C4<0>, C4<0>, C4<0>;
+v0x11f806b10_0 .net "notq", 0 0, L_0x11f817db0;  alias, 1 drivers
+v0x11f816a70_0 .net "q", 0 0, L_0x11f817d10;  alias, 1 drivers
+v0x11f816b10_0 .net "r", 0 0, L_0x11f817960;  alias, 1 drivers
+v0x11f816bc0_0 .net "s", 0 0, L_0x11f817830;  alias, 1 drivers
+v0x11f816c60_0 .net "wOut1", 0 0, L_0x11f817b30;  1 drivers
+v0x11f816d40_0 .net "wOut2", 0 0, L_0x11f817c20;  1 drivers
+v0x11f816de0_0 .net "wR", 0 0, L_0x11f817a10;  1 drivers
+v0x11f816e80_0 .net "wS", 0 0, L_0x11f817a80;  1 drivers
+    .scope S_0x11f805380;
+T_0 ;
+    %delay 2, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f817440_0, 0, 1;
+    %delay 2, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x11f817440_0, 0, 1;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x11f805380;
+T_1 ;
+    %vpi_call 2 15 "$dumpfile", "latchD.vcd" {0 0 0};
+    %vpi_call 2 16 "$dumpvars" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x11f817440_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x11f8174e0_0, 0, 1;
+    %vpi_call 2 28 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "latchD_test.v";
+    "latchD.v";
+    "latchRS.v";
